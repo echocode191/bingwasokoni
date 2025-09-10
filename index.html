@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safaricom Mobile Packages - Bingwa Sokoni</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        :root {
+            --primary-green: #00c853;
+            --dark-green: #009624;
+            --light-green: #69f0ae;
+            --white: #ffffff;
+            --black: #212121;
+            --orange: #ff9800;
+            --gray: #757575;
+            --light-gray: #f5f5f5;
+        }
+        
+        body {
+            background-color: var(--light-gray);
+            color: var(--black);
+            overflow-x: hidden;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--primary-green);
+            color: var(--white);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 700;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 30px;
+            color: var(--white);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            color: var(--light-green);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--light-green);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+            color: var(--white);
+            padding: 150px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: 1;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -70px;
+            left: -70px;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .hero h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        .note {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            font-size: 1rem;
+            display: inline-block;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--orange);
+            color: var(--white);
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3);
+            animation: pulse 2s infinite;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 152, 0, 0.4);
+        }
+        
+        /* Payment Section */
+        .payment {
+            background-color: var(--white);
+            padding: 50px 0;
+            text-align: center;
+        }
+        
+        .payment-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .payment h2 {
+            color: var(--dark-green);
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+        
+        .payment-details {
+            background-color: var(--light-gray);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        .payment-details p {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .till-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark-green);
+        }
+        
+        /* Packages Section */
+        .packages {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark-green);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 4px;
+            background-color: var(--orange);
+            bottom: -10px;
+            left: 20%;
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .package-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .package-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease forwards;
+            opacity: 0;
+        }
+        
+        .package-card:nth-child(1) { animation-delay: 0.1s; }
+        .package-card:nth-child(2) { animation-delay: 0.2s; }
+        .package-card:nth-child(3) { animation-delay: 0.3s; }
+        .package-card:nth-child(4) { animation-delay: 0.4s; }
+        
+        .package-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .package-header {
+            background-color: var(--primary-green);
+            color: var(--white);
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .package-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+        
+        .package-header p {
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+        
+        .package-content {
+            padding: 25px;
+        }
+        
+        .package-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .package-item:last-child {
+            border-bottom: none;
+        }
+        
+        .package-item-info {
+            display: flex;
+            align-items: center;
+        }
+        
+        .package-item-info i {
+            color: var(--primary-green);
+            margin-right: 10px;
+        }
+        
+        .package-item-price {
+            font-weight: 700;
+            color: var(--dark-green);
+        }
+        
+        .package-footer {
+            padding: 15px 25px;
+            background-color: var(--light-gray);
+            text-align: center;
+        }
+        
+        .package-button {
+            display: inline-block;
+            background-color: var(--primary-green);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .package-button:hover {
+            background-color: var(--dark-green);
+        }
+        
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: var(--white);
+            border-radius: 50%;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse 2s infinite;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-green);
+            color: var(--white);
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background-color: var(--orange);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-column p, .footer-column li {
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-column ul li i {
+            margin-right: 10px;
+            color: var(--light-green);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 152, 0, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(255, 152, 0, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 152, 0, 0);
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+            
+            .header-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+            }
+            
+            nav ul li {
+                margin: 0 10px;
+            }
+            
+            .package-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-signal"></i>
+                    <span>Safaricom Bingwa Sokoni</span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#packages">Packages</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>PATA OFFER HATA UKIWA NA OKOA</h1>
+                <h2>BINGWA SOKONI AUTOMATED SERVICE</h2>
+                <div class="note">
+                    <i class="fas fa-info-circle"></i> Note: You can only buy bundles once in a day per number. Choose wisely.
+                </div>
+                <a href="https://wa.me/25458830425?text=I'm%20interested%20in%20your%20mobile%20packages" class="cta-button" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Order Now on WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Section -->
+    <section class="payment">
+        <div class="container">
+            <div class="payment-content">
+                <h2>LIPA NA MPESA</h2>
+                <div class="payment-details">
+                    <p>Buy Goods Till:</p>
+                    <p class="till-number">4631408</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Short Time Deals Section -->
+    <section class="packages" id="packages">
+        <div class="container">
+            <div class="section-title">
+                <h2>Short Time Deals</h2>
+                <p>Perfect for quick internet needs</p>
+            </div>
+            
+            <div class="package-grid">
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>1.5GB Bundle</h3>
+                        <p>Valid for 3 hours</p>
+                    </div>
+                    <div class="package-content">
+                        <div class="package-item">
+                            <div class="package-item-info">
+                                <i class="fas fa-wifi"></i>
+                                <span>1.5GB Data</span>
+                            </div>
+                            <div class="package-item-price">50 KSH</div>
+                        </div>
+                    </div>
+                    <div class="package-footer">
+                        <a href="https://wa.me/25458830425?text=I'd%20like%20to%20order%201.5GB%20valid%20for%203hrs%20-%2050%20KSH" class="package-button" target="_blank">
+                            Order Now
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>1GB Bundle</h3>
+                        <p>Valid for 1 hour</p>
+                    </div>
+                    <div class="package-content">
+                        <div class="package-item">
+                            <div class="package-item-info">
+                                <i class="fas fa-wifi"></i>
+                                <span>1GB Data</span>
+                            </div>
+                            <div class="package-item-price">19 KSH</div>
+                        </div>
+                    </div>
+                    <div class="package-footer">
+                        <a href="https://wa.me/25458830425?text=I'd%20like%20to%20order%201GB%20valid%20for%201hr%20-%2019%20KSH" class="package-button" target="_blank">
+                            Order Now
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>2GB Bundle</h3>
+                        <p>Valid for 1 hour</p>
+                    </div>
+                    <div class="package-content">
+                        <div class="package-item">
+                            <div class="package-item-info">
+                                <i class="fas fa-wifi"></i>
+                                <span>2GB Data</span>
+                            </div>
+                            <div class="package-item-price">25 KSH</div>
+                        </div>
+                    </div>
+                    <div class="package-footer">
+                        <a href="https://wa.me/25458830425?text=I'd%20like%20to%20order%202GB%20valid%20for%201hr%20-%2025%20KSH" class="package-button" target="_blank">
+                            Order Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 24hrs Deals Section -->
+    <section class="packages">
+        <div class="container">
+            <div class="section-title">
+                <h2>24hrs Deals</h2>
+                <p>Full day connectivity at affordable prices</p>
+            </div>
+            
+            <div class="package-grid">
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>250MB Bundle</h3>
+                        <p>Valid for 24 hours</p>
+                    </div>
+                    <div class="package-content">
+                        <div class="package-item">
+                            <div class="package-item-info">
+                                <i class="fas fa-wifi"></i>
+                                <span>250MB Data</span>
+                            </div>
+                            <div class="package-item-price">20 KSH</div>
+                        </div>
+                    </div>
+                    <div class="package-footer">
+                        <a href="https://wa.me/25458830425?text=I'd%20like%20to%20order%20250MBs%20valid%20for%2024hrs%20-%2020%20KSH" class="package-button" target="_blank">
+                            Order Now
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>1.25GB Bundle</h3>
+                        <p>Valid until midnight</p>
+                    </div>
+                    <div class="package-content">
+                        <div class="package-item">
+                            <div class="package-item-info">
+                                <i class="fas fa-wifi"></i>
+                                <span>1.25GB Data</span>
+                            </div>
+                            <div class="package-item-price">55 KSH</div>
+                        </div>
+                    </div>
+                    <div class="package-footer">
+                        <a href="https://wa.me/25458830425?text=I'd%20like%20to%20order%201.25GB%20valid%20until%20midnight%20-%2055%20KSH" class="package-button" target="_blank">
+                            Order Now
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>1GB Bundle</h3>
+                        <p>Valid for 24 hours</p>
+                    </div>
+                    <div class="package-content">
+                        <div class="package-item">
+                            <div class="package-item-info">
+                                <i class="fas fa-wifi"></i>
+                                <span>1GB Data</span>
+                            </div>
+                            <div class="package-item-price">99 KSH</div>
+                        </div>
+                    </div>
+                    <div class="package-footer">
+                        <a href="https://wa.me/25458830425?text=I'd%20like%20to%20order%201GB%20valid%20for%2024hrs%20-%2099%20KSH" class="package-button" target="_blank">
+                            Order Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Weekly Deals Section -->
+    <section class="packages">
+        <div class="container">
+            <div class="section-title">
+                <h2>Weekly Deals</h2>
+                <p>7 days of uninterrupted service</p>
+            </div>
+            
+            <div class="package-grid">
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>350MB Bundle</h3>
+                        <p>Valid for 7 days</p>
+                    </div>
+                    <div class="package-content">
+                        <div class="package-item">
+                            <div class="package-item-info">
+                                <i class="fas fa-wifi"></i>
+                                <span>350MB Data</span>
+                            </div>
+                            <div class="package-item-price">49 KSH</div>
+                        </div>
+                    </div>
+                    <div class="package-footer">
+                        <a href="https://wa.me/25458830425?text=I'd%20like%20to%20order%20350MBs%20valid%20for%207%20days%20-%2049%20KSH" class="package-button" target="_blank">
+                            Order Now
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>2.5GB Bundle</h3>
+                        <p>Valid for 7 days</p>
+                    </div>
+                    <div class="package-content">
+                        <div class="package-item">
+                            <div class="package-item-info">
+                                <i class="fas fa-wifi"></i>
+                                <span>2.5GB Data</span>
+                            </div>
+                            <div class="package-item-price">300 KSH</div>
+                        </div>
+                    </div>
+                    <div class="package-footer">
+                        <a href="https://wa.me/25458830425?text=I'd%20like%20to%20order%202.5GB%20valid%20for%207%20days%20-%20300%20KSH" class="package-button" target="_blank">
+                            Order Now
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>6GB Bundle</h3>
+                        <p>Valid for 7 days</p>
+                    </div>
+                    <div class="package-content">
+                        <div class="package-item">
+                            <div class="package-item-info">
+                                <i class="fas fa-wifi"></i>
+                                <span>6GB Data</span>
+                            </div>
+                            <div class="package-item-price">700 KSH</div>
+                        </div>
+                    </div>
+                    <div class="package-footer">
+                        <a href="https://wa.me/25458830425?text=I'd%20like%20to%20order%206GB%20valid%20for%207%20days%20-%20700%20KSH" class="package-button" target="_blank">
+                            Order Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Monthly Deals Section -->
+    <section class="packages">
+        <div class="container">
+            <div class="section-title">
+                <h2>Monthly Deals</h2>
+                <p>Best value for 30 days</p>
+            </div>
+            
+            <div class="package-grid">
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>1.2GB Bundle</h3>
+                        <p>Valid for 30 days</p>
+                    </div>
+                    <div class="package-content">
+                        <div class="package-item">
+                            <div class="package-item-info">
+                                <i class="fas fa-wifi"></i>
+                                <span>1.2GB Data</span>
+                            </div>
+                            <div class="package-item-price">250 KSH</div>
+                        </div>
+                    </div>
+                    <div class="package-footer">
+                        <a href="https://wa.me/25458830425?text=I'd%20like%20to%20order%201.2GB%20valid%20for%2030%20days%20-%20250%20KSH" class="package-button" target="_blank">
+                            Order Now
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>2.5GB Bundle</h3>
+                        <p>Valid for 30 days</p>
+                    </div>
+                    <div class="package-content">
+                        <div class="package-item">
+                            <div class="package-item-info">
+                                <i class="fas fa-wifi"></i>
+                                <span>2.5GB Data</span>
+                            </div>
+                            <div class="package-item-price">500 KSH</div>
+                        </div>
+                    </div>
+                    <div class="package-footer">
+                        <a href="https://wa.me/25458830425?text=I'd%20like%20to%20order%202.5GB%20valid%20for%2030%20days%20-%20500%20KSH" class="package-button" target="_blank">
+                            Order Now
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>10GB Bundle</h3>
+                        <p>Valid for 30 days</p>
+                    </div>
+                    <div class="package-content">
+                        <div class="package-item">
+                            <div class="package-item-info">
+                                <i class="fas fa-wifi"></i>
+                                <span>10GB Data</span>
+                            </div>
+                            <div class="package-item-price">999 KSH</div>
+                        </div>
+                    </div>
+                    <div class="package-footer">
+                        <a href="https://wa.me/25458830425?text=I'd%20like%20to%20order%2010GB%20valid%20for%2030%20days%20-%20999%20KSH" class="package-button" target="_blank">
+                            Order Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SMS Offers Section -->
+    <section class="packages">
+        <div class="container">
+            <div class="section-title">
+                <h2>SMS Offers</h2>
+                <p>Stay connected with affordable SMS packages</p>
+            </div>
+            
+            <div class="package-grid">
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>20 SMS</h3>
+                        <p>Valid for 24 hours</p>
+                    </div>
+                    <div class="package-content">
+                        <div class="package-item">
+                            <div class="package-item-info">
+                                <i class="fas fa-sms"></i>
+                                <span>20 SMS</span>
+                            </div>
+                            <div class="package-item-price">5 KSH</div>
+                        </div>
+                    </div>
+                    <div class="package-footer">
+                        <a href="https://wa.me/25458830425?text=I'd%20like%20to%20order%2020%20SMS%20valid%20for%2024hrs%20-%205%20KSH" class="package-button" target="_blank">
+                            Order Now
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>200 SMS</h3>
+                        <p>Valid for 24 hours</p>
+                    </div>
+                    <div class="package-content">
+                        <div class="package-item">
+                            <div class="package-item-info">
+                                <i class="fas fa-sms"></i>
+                                <span>200 SMS</span>
+                            </div>
+                            <div class="package-item-price">10 KSH</div>
+                        </div>
+                    </div>
+                    <div class="package-footer">
+                        <a href="https://wa.me/25458830425?text=I'd%20like%20to%20order%20200%20SMS%20valid%20for%2024hrs%20-%2010%20KSH" class="package-button" target="_blank">
+                            Order Now
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>1000 SMS</h3>
+                        <p>Valid for 1 week</p>
+                    </div>
+                    <div class="package-content">
+                        <div class="package-item">
+                            <div class="package-item-info">
+                                <i class="fas fa-sms"></i>
+                                <span>1000 SMS</span>
+                            </div>
+                            <div class="package-item-price">30 KSH</div>
+                        </div>
+                    </div>
+                    <div class="package-footer">
+                        <a href="https://wa.me/25458830425?text=I'd%20like%20to%20order%201000%20SMS%20valid%20for%201%20week%20-%2030%20KSH" class="package-button" target="_blank">
+                            Order Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calls Offers Section -->
+    <section class="packages">
+        <div class="container">
+            <div class="section-title">
+                <h2>Calls Offers</h2>
+                <p>Affordable call minutes for everyone</p>
+            </div>
+            
+            <div class="package-grid">
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>45 Minutes</h3>
+                        <p>Valid for 3 hours</p>
+                    </div>
+                    <div class="package-content">
+                        <div class="package-item">
+                            <div class="package-item-info">
+                                <i class="fas fa-phone"></i>
+                                <span>45 Minutes</span>
+                            </div>
+                            <div class="package-item-price">21 KSH</div>
+                        </div>
+                    </div>
+                    <div class="package-footer">
+                        <a href="https://wa.me/25458830425?text=I'd%20like%20to%20order%2045%20mins%20(3hrs)%20-%2021%20KSH" class="package-button" target="_blank">
+                            Order Now
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>45 Minutes</h3>
+                        <p>Valid for 1 hour</p>
+                    </div>
+                    <div class="package-content">
+                        <div class="package-item">
+                            <div class="package-item-info">
+                                <i class="fas fa-phone"></i>
+                                <span>45 Minutes</span>
+                            </div>
+                            <div class="package-item-price">22 KSH</div>
+                        </div>
+                    </div>
+                    <div class="package-footer">
+                        <a href="https://wa.me/25458830425?text=I'd%20like%20to%20order%2045%20mins%20(1hr)%20-%2022%20KSH" class="package-button" target="_blank">
+                            Order Now
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>50 Minutes</h3>
+                        <p>Midnight offer</p>
+                    </div>
+                    <div class="package-content">
+                        <div class="package-item">
+                            <div class="package-item-info">
+                                <i class="fas fa-phone"></i>
+                                <span>50 Minutes</span>
+                            </div>
+                            <div class="package-item-price">51 KSH</div>
+                        </div>
+                    </div>
+                    <div class="package-footer">
+                        <a href="https://wa.me/25458830425?text=I'd%20like%20to%20order%2050%20mins%20midnight%20-%2051%20KSH" class="package-button" target="_blank">
+                            Order Now
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>100 Minutes</h3>
+                        <p>Valid for 2 days</p>
+                    </div>
+                    <div class="package-content">
+                        <div class="package-item">
+                            <div class="package-item-info">
+                                <i class="fas fa-phone"></i>
+                                <span>100 Minutes</span>
+                            </div>
+                            <div class="package-item-price">100 KSH</div>
+                        </div>
+                    </div>
+                    <div class="package-footer">
+                        <a href="https://wa.me/25458830425?text=I'd%20like%20to%20order%20100%20mins%20for%202%20days%20-%20100%20KSH" class="package-button" target="_blank">
+                            Order Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Midnight Deal Section -->
+    <section class="packages">
+        <div class="container">
+            <div class="section-title">
+                <h2>Special Midnight Deal</h2>
+                <p>Exclusive night browsing offer</p>
+            </div>
+            
+            <div class="package-grid">
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>1.25GB Midnight</h3>
+                        <p>Special midnight offer</p>
+                    </div>
+                    <div class="package-content">
+                        <div class="package-item">
+                            <div class="package-item-info">
+                                <i class="fas fa-wifi"></i>
+                                <span>1.25GB Data</span>
+                            </div>
+                            <div class="package-item-price">55 KSH</div>
+                        </div>
+                    </div>
+                    <div class="package-footer">
+                        <a href="https://wa.me/25458830425?text=I'd%20like%20to%20order%201.25GB%20Midnight%20-%2055%20KSH" class="package-button" target="_blank">
+                            Order Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/25458830425?text=I'm%20interested%20in%20your%20mobile%20packages" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>About Us</h3>
+                    <p>BINGWA SOKONI AUTOMATED SERVICE provides affordable and reliable mobile packages to keep you connected with what matters most.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Payment Method</h3>
+                    <p>Pay conveniently via M-Pesa:</p>
+                    <ul>
+                        <li><i class="fas fa-mobile-alt"></i> LIPA NA MPESA</li>
+                        <li><i class="fas fa-money-bill-wave"></i> Buy Goods Till: 4631408</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-user"></i> Agent Bush</li>
+                        <li><i class="fas fa-phone"></i> 0758830425 (Incase of any issues)</li>
+                        <li><i class="fab fa-whatsapp"></i> 25458830425 (For orders)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Safaricom Bingwa Sokoni. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.package-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
